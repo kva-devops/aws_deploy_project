@@ -1,0 +1,75 @@
+---
+- name: Create AWS ec2 instance
+  hosts: local
+  connection: local
+  gather_facts: false
+  vars:
+    keypair             : my-ssh-frankfurt
+    instance_type       : t2.micro
+    image               : ami-03c3a7e4263fd998c
+    region              : eu-central-1
+    count               : 2
+    security_group      : Ansible-SecurityGroup
+    aws_access_key      : AKIA47WLTWHCDMS7V33N
+    aws_secret_key      : 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
+
+
+  tasks:
+    - name: Create new sec group (22 and 80 port open)
+      ec2_group:
+        name            : "{{ security_group }}"
+        description     : Sec group for servers with port 22,80,443
+        region          : "{{ region }}"
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port: 443
+            to_port: 443
+            cidr_ip: 0.0.0.0/0
+        rules_egress:
+          - proto: all
+            cidr_ip: 0.0.0.0/0
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
