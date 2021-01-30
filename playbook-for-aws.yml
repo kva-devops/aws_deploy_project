@@ -10,8 +10,8 @@
     region              : eu-central-1
     count               : 2
     security_group      : Ansible-SecurityGroup
-    aws_access_key      : AKIA47WLTWHCDMS7V33N
-    aws_secret_key      : lEsol/7h/FBy8aAH+sl9OpERnnjZk6Ri5UtLzFzp
+    aws_access_key      : enter_your_key
+    aws_secret_key      : enter_your_key
 
 
   tasks:
