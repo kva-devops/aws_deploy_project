@@ -24,3 +24,11 @@ ansible -i (replace hosts) ec2.py group-hosts
 ec2.ini - config file for control ec2.py
 change rights ssh-keys hosts: sudo chmod 400 key-name
 
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Playbook for EC2 up
+
+curl -O https://bootstrap.pypa.io/get-pip.py
+sudo yum install python3 -y
+python3 get-pip.py
+pip install botocore
+pip install boto3
