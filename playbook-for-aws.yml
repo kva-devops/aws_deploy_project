@@ -13,7 +13,6 @@
     aws_access_key      : your_ssh_key
     aws_secret_key      : your_ssh_key
 
-
   tasks:
     - name: boto and boto3
       pip:
