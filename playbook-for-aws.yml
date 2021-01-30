@@ -39,8 +39,24 @@
         aws_access_key: "{{ aws_access_key }}"
         aws_secret_key: "{{ aws_secret_key }}"
 
+    - name: Create new AWS ES2 server
+      ec2:
+        key_name: "{{ keypair }}"
+        instance_type: "{{ instance_type }}"
+        image: "{{ image }}"
+        group: "{{ security_group }}"
+        region: "{{ region }}"
+        instance_tags: 
+          Name: Testing server
+          Type: ForMyTest
+        count: "{{ count }}"
+        wait: true
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+      register: ec2
 
-
+    - name: Print EC2 var
+      debug: var=ec2
 
 
 
