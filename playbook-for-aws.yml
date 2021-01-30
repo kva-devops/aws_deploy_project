@@ -4,17 +4,23 @@
   connection: local
   gather_facts: false
   vars:
-    keypair             : my-ssh-frankfurt
-    instance_type       : t2.micro
-    image               : ami-03c3a7e4263fd998c
+    keypair             : your_ssh_key
+    instance_type       : t2.micro              # Free
+    image               : ami-0a6dc7529cd559185 # Amazon Linux
     region              : eu-central-1
     count               : 2
     security_group      : Ansible-SecurityGroup
-    aws_access_key      : AKIA47WLTWHCDMS7V33N
-    aws_secret_key      : lEsol/7h/FBy8aAH+sl9OpERnnjZk6Ri5UtLzFzp
+    aws_access_key      : your_ssh_key
+    aws_secret_key      : your_ssh_key
 
 
   tasks:
+    - name: boto and boto3
+      pip:
+        name: [ "boto", "botocore"]
+        extra_args: "--user"
+      
+
     - name: Create new sec group (22 and 80 port open)
       ec2_group:
         name            : "{{ security_group }}"
@@ -57,35 +63,3 @@
 
     - name: Print EC2 var
       debug: var=ec2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
